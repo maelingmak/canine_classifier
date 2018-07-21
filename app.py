@@ -9,7 +9,8 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-@app.route('find_dog'):
+@app.route('/find_dog')
+def find_dog():
     return {'dog_breed':dog_breed},
            {'dog_jpg':dog_jpg}
 
