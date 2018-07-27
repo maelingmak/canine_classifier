@@ -19,7 +19,7 @@
                 <a href="#" class="logo"> Group Project 3</a>
                 <nav class="menu">
                     <a href="#about"> How does it work? </a>
-                    <a href="#visualization"> Start </a>
+                    <a href="#visualization"> Upload a picture </a>
                     
                 </nav>
             </div>
@@ -40,65 +40,50 @@
         <!-- about -->
         <section class="container-fluid about">
             <div class="container">
-                <h2 id="about"> Come find out what breed your dog is with just one picture. </h2>
                 <hr class="separator">
                 <div class="row">
                     
-                    <article class="col-md-4 col-lg-4" col-xs-4 col-sm-4>
-                        <h2> How does it work? </h2>
-                        <p>
-                            You upload a dog picture. Then an algorythm will try to match your picture with a dog breed in our data base.
+                    <article class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                        <h2 id="about"> How does it work? </h2>
+                        <p>Find out what breed your dog is with just one picture. Upload a dog picture. Then an algorythm will try to match your picture with a dog breed in our data base.
                         </p>
                     </article>
                     
-                    <article class="col-md-4 col-lg-4" col-xs-4 col-sm-4>
-                        <h2> Let's start! </h2>
+                    <article class="col-md-6 col-lg-6 col-xs-12 col-sm-12">
+                        <h2 id="visualization"> Let's start! </h2>
                         <p>
                             <form method=post enctype=multipart/form-data>
                                 <input type=file name=file>
                                 <input type=submit value=Upload>
                             </form>
-<!--
-                            <input type="file" accept="image/*" onchange="loadFile(event)">
-                                <img id="output"/>
-                                    <script>
-                                        var loadFile = function(event) {
-                                        var reader = new FileReader();
-                                        reader.onload = function(){
-                                          var output = document.getElementById('output');
-                                          output.src = reader.result;
-                                        };
-                                        reader.readAsDataURL(event.target.files[0]);
-                                        };
-                                    </script>
--->
                         </p>
                     </article>
-                    
-                    <article class="col-md-4 col-lg-4" col-xs-4 col-sm-4>
-                        <h2> Results </h2>
+                </div>
+                
+                <div class="row">
+                    <article class="col-md-12 col-lg-12 col-xs-12 col-sm-12 output">
+                        <h2> Your picture </h2>
                         {% if data == None %}
                             <p>
                                 label: 0.00 %
                             </p>
                         {% else %}    
                             <p>
-                                {{data.predictions.0.label}}: {{data.predictions.0.probability}} %
+                                {{data.predictions.0.label}}: {{data.predictions.0.probability}} % 
                             </p>
                         <img src="static/img/{{data.predictions.0.filename}}">
                         
                         {% endif %}
                         
-                    
                     </article>
-                
-                
                 </div>
-            
+        
             </div>
             
         
         </section>
+    
+    
         
         <script src="{{ url_for('static', filename='js/app.js') }}"></script>
         
